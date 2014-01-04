@@ -17,9 +17,9 @@
 
 //#include "Collision.h"
 
-float Y = 4;  //11.7475
+float Y = 4;  //11.7475 start position
 
-float X = 3.1; //7.9375
+float X = 3.1; //7.9375 start position
 
 float distanceF;
 
