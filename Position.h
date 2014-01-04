@@ -11,15 +11,9 @@
 
 
 
-#include "Direction.h"
+writeX(4);  //11.7475 start position
 
-#include "ReadData.h"
-
-//#include "Collision.h"
-
-float Y = 4;  //11.7475 start position
-
-float X = 3.1; //7.9375 start position
+writeY(3.1); //7.9375 start position
 
 float distanceF;
 
@@ -88,25 +82,25 @@ task Get_Position()
 
 		holder2 = 0;
 
-		currHeading = 0;
+		writeCurrentHeading(0);
 
 
 
 
 
-		if(movement != 2)  // if robot is moving
+		if(getMovement() != 2)  // if robot is moving
 
 		{
 			nMotorEncoder[motorB] = 0;
 
-			while(movement != 2) // while robot is moving
+			while(getMovement() != 2) // while robot is moving
 
 			{
 				distanceF = nMotorEncoder[motorB];  // puts degrees from motor B into variable distance
 
 				nxtDisplayTextLine(1, "distance:  %f", distanceF);
 
-				if(movement == 2)
+				if(getMovement() == 2)
 
 				{
 					break;
@@ -118,7 +112,7 @@ task Get_Position()
 		}
 
 
-		if(movement == 2)   // if robot is stopped
+		if(getMovement() == 2)   // if robot is stopped
 
 		{
 
@@ -132,19 +126,19 @@ task Get_Position()
 
 				degree = distanceF;
 
-				sin_cos = sin(currentHeading);       //  get the sin from the numbers of degrees turned
+				sin_cos = sin(getCurrentHeading());       //  get the sin from the numbers of degrees turned
 
 				Xtemp = sin_cos * distanceF;      // multiply the sin by the number of distance travled and put it in the X variable
 
 				sin_cos = 0;                // set the sin_cos variable to zero
 				//PlaySound(soundBeepBeep);
-				sin_cos = cos(currentHeading);    // get the cos from the numbers of degrees turned
+				sin_cos = cos(getCurrentHeading());    // get the cos from the numbers of degrees turned
 
 				Ytemp = sin_cos * distanceF;   //  multiply the cos by the number of distance travled and put it in the Y variable
 
-				Y = Ytemp + Y;              // adds the past value of Y to Y
+				writeY(Ytemp + getY());              // adds the past value of Y to Y
 
-				X = Xtemp + X;              // adds the past value of X to X
+				writeX(Xtemp + getX());              // adds the past value of X to X
 
 				//nxtDisplayCenteredTextLine(4, "X:  %f", X);
 
@@ -167,23 +161,23 @@ task Get_Position()
 
 				degrees = distanceF;       //put distanceF value into degrees variable
 
-				sin_cos = sin(currentHeading);       //  get the sin from the numbers of degrees turned
+				sin_cos = sin(getCurrentHeading());       //  get the sin from the numbers of degrees turned
 
 				Ytemp = sin_cos * distanceF;      // multiply the sin by the number of distance travled and put it in the Y variable
 
 				sin_cos = 0;                // set the sin_cos variable to zero
 
-				sin_cos = cos(currentHeading);    // get the cos from the numbers of degrees turned
+				sin_cos = cos(getCurrentHeading());    // get the cos from the numbers of degrees turned
 
 				Xtemp = sin_cos * distanceF;   //  multiply the cos by the number of distance travled and put it in the X variable
 
 				Ytemp = -1 * Ytemp;          //makes Y a negitive
 
-				Y = Ytemp + Y;              // adds the past value of Y to Y
+				writeY(Ytemp + getY());              // adds the past value of Y to Y
 
 				//	Y = Ytemp * 2.54;
 
-				X = Xtemp + X; // adds the past value of X to X
+				writeX(Xtemp + getX()); // adds the past value of X to X
 
 				//	X = Xtemp * 2.54;
 
@@ -204,15 +198,15 @@ task Get_Position()
 
 			//	distanceF = holder3 * 2.54;     //convert inches to cm
 
-				//degrees = currentHeading;       //put distanceF value into degrees variable
+				//degrees = getCurrentHeading();       //put distanceF value into degrees variable
 
-				sin_cos = sin(currentHeading);       //  get the sin from the numbers of degrees turned
+				sin_cos = sin(getCurrentHeading());       //  get the sin from the numbers of degrees turned
 
 				Xtemp = sin_cos * distanceF;      // multiply the sin by the number of distance travled and put it in the X variable
 
 				sin_cos = 0;                // set the sin_cos variable to zero
 
-				sin_cos = cos(currentHeading);    // get the cos from the numbers of degrees turned
+				sin_cos = cos(getCurrentHeading());    // get the cos from the numbers of degrees turned
 
 				Ytemp = sin_cos * distanceF;   //  multiply the cos by the number of distance travled and put it in the Y variable
 

@@ -1,15 +1,11 @@
 
 #include "Accel_Read.h"
 
-int movement = 0;
-
-int Set = -75; //set to threshold --- default is -75
-
 task Collision()
 
 {
 
-	movement = 0;
+	writeMovement(0);
 
 	StartTask(Accel_Read);
 
@@ -24,7 +20,7 @@ task Collision()
 
 		{
 
-			movement = 1;
+			writeMovement(1);
 
 		}
 
@@ -32,7 +28,7 @@ task Collision()
 
 		{
 
-			movement = 2;
+			writeMovement(2);
 
 
 		}
@@ -43,7 +39,7 @@ task Collision()
 		{
 
 
-			movement = 0;
+			writeMovement(0);
 
 		}
 

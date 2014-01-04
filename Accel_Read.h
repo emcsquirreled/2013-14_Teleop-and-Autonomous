@@ -6,7 +6,6 @@ int Y = 0;
 
 int Z = 0;
 
-
 task Accel_Read()
 
 {

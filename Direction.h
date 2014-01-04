@@ -1,7 +1,6 @@
-#include "hitechnic-gyro.h"
 #include "Logger.h"
 
-float currentHeading = 1;
+writeCurrentHeading(1);
 
 bool gatheringData = true;
 
@@ -26,11 +25,11 @@ task getHeading () {
     if (gatheringData == true){
     	if (abs(currRate) > 5 || abs(currRate) < -5) {
 
-      	prevHeading = currentHeading;
-      	currentHeading = prevHeading + currRate * deltaTime;
+      	prevHeading = getCurrentHeading();
+      	writeCurrentHeading(prevHeading + currRate * deltaTime);
 
-      	if (currentHeading > 360) currentHeading -= 360;
-      	else if (currentHeading < 0) currentHeading += 360;
+      	if (getCurrentHeading() > 360) getCurrentHeading() -= 360;
+      	else if (getCurrentHeading() < 0) getCurrentHeading() += 360;
     	}
   	}
   	//This calculates the amount of time in seconds since this part of the code as last run
@@ -38,7 +37,7 @@ task getHeading () {
     wait1Msec(1);
     deltaTime = ((float)time1[T4]) / 1000.0;
     time1[T4] = 0;
-    log_integer(currentHeading);
+    log_integer(getCurrentHeading());
     log_integer(deltaTime*1000);
 		log_integer(currRate);
   }
