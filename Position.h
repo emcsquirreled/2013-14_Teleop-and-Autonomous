@@ -131,7 +131,7 @@ task Get_Position()
 				Xtemp = sin_cos * distanceF;      // multiply the sin by the number of distance travled and put it in the X variable
 
 				sin_cos = 0;                // set the sin_cos variable to zero
-				//PlaySound(soundBeepBeep);
+
 				sin_cos = cos(getCurrentHeading());    // get the cos from the numbers of degrees turned
 
 				Ytemp = sin_cos * distanceF;   //  multiply the cos by the number of distance travled and put it in the Y variable
@@ -139,10 +139,6 @@ task Get_Position()
 				writeY(Ytemp + getY());              // adds the past value of Y to Y
 
 				writeX(Xtemp + getX());              // adds the past value of X to X
-
-				//nxtDisplayCenteredTextLine(4, "X:  %f", X);
-
-				//nxtDisplayCenteredTextLine(6, "Y:  %f", Y);
 
 
 
@@ -155,9 +151,7 @@ task Get_Position()
 
 				holder2 = distanceF / 360;       //covert degrees to rotations
 
-				holder3 = WheelCir * holder2;    //get the distance of inches traveled
-
-			//	distanceF = holder3 * 2.54;     //convert inches to cm
+				distanceF = WheelCir * holder2;    //get the distance of inches traveled
 
 				degrees = distanceF;       //put distanceF value into degrees variable
 
@@ -175,11 +169,7 @@ task Get_Position()
 
 				writeY(Ytemp + getY());              // adds the past value of Y to Y
 
-				//	Y = Ytemp * 2.54;
-
 				writeX(Xtemp + getX()); // adds the past value of X to X
-
-				//	X = Xtemp * 2.54;
 
 
 
@@ -194,11 +184,9 @@ task Get_Position()
 
 				holder2 = distanceF / 360;       //covert degrees to rotations
 
-				holder3 = WheelCir * holder2;    //get the distance of inches traveled
+				distanceF = WheelCir * holder2;    //get the distance of inches traveled
 
-			//	distanceF = holder3 * 2.54;     //convert inches to cm
-
-				//degrees = getCurrentHeading();       //put distanceF value into degrees variable
+				degrees = getCurrentHeading();       //put distanceF value into degrees variable
 
 				sin_cos = sin(getCurrentHeading());       //  get the sin from the numbers of degrees turned
 
@@ -230,11 +218,9 @@ task Get_Position()
 
 				holder2 = distanceF / 360;       //covert degrees to rotations
 
-				holder3 = WheelCir * holder2;    //get the distance of inches traveled
+				distanceF = WheelCir * holder2;    //get the distance of inches traveled
 
-			//	distanceF = holder3 * 2.54;     //convert inches to cm
-
-				//degrees = currentHeading;       //put currHeading value into degrees variable
+				degrees = currentHeading;       //put currHeading value into degrees variable
 
 				sin_cos = sin(getCurrentHeading());       //  get the sin from the numbers of degrees turned
 
