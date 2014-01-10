@@ -1,5 +1,6 @@
 #pragma config(Hubs,  S1, HTMotor,  HTServo,  HTMotor,  HTMotor)
 #pragma config(Sensor, S1,     ,               sensorI2CMuxController)
+#pragma config(Sensor, S4,     HTPB,               sensorI2CCustom9V)
 #pragma config(Motor,  mtr_S1_C1_1,     driveRight,    tmotorTetrix, openLoop)
 #pragma config(Motor,  mtr_S1_C1_2,     driveLeft,     tmotorTetrix, openLoop)
 #pragma config(Motor,  mtr_S1_C3_1,     driveLifter,   tmotorTetrix, openLoop)
@@ -18,7 +19,7 @@
 * teleop.c
 * This file is part of Teleop
 *
-* Copyright (C) 2013 - EMC Squirrled
+* Copyright (C) 2012 - EMC Squirrled
 *
 * Teleop is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -40,6 +41,7 @@
 /* ===== INCLUDES ===== */
 
 #include <JoystickDriver.c>
+#include "drivers/hitechnic-protoboard.h"
 
 /* ===== DEFINES ===== */
 
@@ -67,6 +69,7 @@ task ReadJoystick1();
 task ReadJoystick2();
 task UpdateDriveMotors();
 task UpdateManipulators();
+task UpdateLeds();
 task Debug();
 
 /* ===== STRUCTURES ===== */
@@ -131,6 +134,7 @@ task main() {
 	StartTask(ReadJoystick2);
 	StartTask(UpdateDriveMotors);
 	StartTask(UpdateManipulators);
+	StartTask(UpdateLeds);
 	StartTask(Debug);
 
 	/* Do nothing, since the tasks do it all */
@@ -246,8 +250,11 @@ task ReadJoystick2() {
 		}
 		/* Controls the lock from the 9 button */
 		/* Requires both drivers to press it to try and prevent accidents */
-		if(joy2Btn(9)) {
+		if(joy2Btn(9) && joy2Btn(10)) {
 			oRobot.locked = false;
+		}
+		if(joy1Btn(9) && joy2Btn(9)){
+			oRobot.locked = true;
 		}
 		/* Controls the hooks from the 1 and 3 buttons */
 		/* Unlike the other hanging things, this only requires one controller to hit it */
@@ -457,5 +464,19 @@ int iJoyToPower(side theSide) {
 	default:
 		PlaySound(soundBeepBeep);
 		return 0;
+	}
+}
+task UpdateLeds() {
+	int analog0 = 0;
+	HTPBsetupIO(HTPB, 0x3F);
+	while(true){
+		analog0 = HTPBreadADC(HTPB,1,10);
+		nxtDisplayCenteredBigTextLine(1, "A0: %d", analog0);
+		if (analog0 > 530){
+			HTPBwriteIO(HTPB, 0x08);
+		}else{
+			HTPBwriteIO(HTPB, 0x04);
+		}
+		wait10Msec(2);
 	}
 }
