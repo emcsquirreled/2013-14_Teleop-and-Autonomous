@@ -214,9 +214,9 @@ task Get_Position()
 
 				Xtemp = -1 * Xtemp;          //makes X negitive
 
-				Y = Ytemp + Y;              // adds the past value of Y to Y
+				writeY(Ytemp + getY());              // adds the past value of Y to Y
 
-				X = Xtemp + X;              // adds the past value of X to X
+				writeX(Xtemp + getX());              // adds the past value of X to X
 
 
 
@@ -236,21 +236,21 @@ task Get_Position()
 
 				//degrees = currentHeading;       //put currHeading value into degrees variable
 
-				sin_cos = sin(currentHeading);       //  get the sin from the numbers of degrees turned
+				sin_cos = sin(getCurrentHeading());       //  get the sin from the numbers of degrees turned
 
 				Ytemp = sin_cos * distanceF;      // multiply the sin by the number of distance travled and put it in the X variable
 
 				sin_cos = 0;                // set the sin_cos variable to zero
 
-				sin_cos = cos(currentHeading);    // get the cos from the numbers of degrees turned
+				sin_cos = cos(getCurrentHeading());    // get the cos from the numbers of degrees turned
 
 				Xtemp = sin_cos * distanceF;   //  multiply the cos by the number of distance travled and put it in the Y variable
 
 				Xtemp = -1 * Xtemp;         //makes X negitive
 
-				Y = Ytemp + Y;              // adds the past value of Y to Y
+				writeY(Ytemp + getY());              // adds the past value of Y to Y
 
-				X = Xtemp + X;              // adds the past value of X to X
+				writeX(Xtemp + getX());              // adds the past value of X to X
 
 
 
