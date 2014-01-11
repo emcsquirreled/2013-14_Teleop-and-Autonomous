@@ -1,4 +1,3 @@
-writeDistance(0);
 
 float distanceF2 = 0;
 

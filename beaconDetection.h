@@ -1,7 +1,4 @@
 
-#include "hitechnic-irseeker-v1.h"
-#include "hitechnic-irseeker-v2.h"
-
 
 
 

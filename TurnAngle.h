@@ -1,4 +1,4 @@
-#include "Direction.h"
+
 
 /*
 @This code is a function that you call to make the robot turn in degrees. TO USE: use TurnAngle(-90, true) This makes the robot turn -90 degrees to the left.  First in the pragma is degrees wanted to turn and the second is a bool telling the robot to turn left or right (TRUE=Left FAlSE=Right)
@@ -16,7 +16,7 @@ void TurnAngle(int Goal1, bool Adirection)
 	int Goal2;
 
 	// add the degrees wanted to go with the current degree heading and put that value into Goal2 //
-	Goal2 = (int) currentHeading + Goal1;
+	Goal2 = (int) getCurrentHeading() + Goal1;
 
 
 	// If the Goal2 value exceeds 360 it will convert the value to something the Direction program can work with //
@@ -39,7 +39,7 @@ void TurnAngle(int Goal1, bool Adirection)
 
 		holder3 = abs(Goal2);
 
-		holder4 = holder3 - (int) currentHeading;
+		holder4 = holder3 - (int) getCurrentHeading();
 
 		Goal2 = 0;
 
@@ -58,10 +58,9 @@ void TurnAngle(int Goal1, bool Adirection)
 	{
 
 
-		while((int) currentHeading != Goal2 + 3 && Goal2 - 3 )
+		while((int) getCurrentHeading() != Goal2 + 3 && Goal2 - 3 )
 
 		{
-			PlaySound(soundBeepBeep);
 			motor[motorD] = 100;		//make positive if on blue and make negitive if on red
 			motor[motorE] = -100;   //make negitive if on blue and make positive if on red
 		}
@@ -85,7 +84,7 @@ void TurnAngle(int Goal1, bool Adirection)
 
 	{
 
-		while((int) currentHeading != Goal2 + 3 && Goal2 - 3)
+		while((int) getCurrentHeading() != Goal2 + 3 && Goal2 - 3)
 
 		{
 

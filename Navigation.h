@@ -1,7 +1,3 @@
-// Includes
-#include "ObstacleAvoidance.h"
-#include "Direction.h"
-#include "Collision.h"
 
 // Constants
 float GEARRATIO = 1.5;
@@ -19,7 +15,7 @@ void driveDistance(int inches, int power){
 	//Tells the robot to drive a certain distance based on parameters specified
 	//The value for power has no effect on distance traveled theoretically
 	//In practice it overshoots slightly more with higher power levels
-	movement = 0;
+writeMovement(0);
 	wait10Msec(5);
 	nMotorEncoder[motorA] = 0; // It is good practice to reset encoder values at the start of a function.
 	//Calculate inches by multiplying the ratio we determined earlier with the amount of
@@ -39,13 +35,13 @@ void driveDistance(int inches, int power){
 
 	//Waits until we have moved farther than the goal number of ticks
 	//It will also stop if we aren't going backwards and we detect a collision
-	while(abs(nMotorEncoder[motorA]) < tickGoal && (movement != 2 || power < 0))
+	while(abs(nMotorEncoder[motorA]) < tickGoal && (getMovement() != 2 || power < 0))
 	{
 		motor[motorD] = power;  // The nice thing about encoders is that we can use any power value we want, and
 		motor[motorE] = -power; // still get the same distance.
 		motor[motorA] = power;
 	}
-	if (movement == 2 && power > 0){
+	if (getMovement() == 2 && power > 0){
 		StopAllTasks();
 	}
 	motor[motorE] = 0;
@@ -65,7 +61,7 @@ void reachHeading(int goalHeading){
 		goalHeading+=360;
 	}
 	//This next bunch of code simply calculates whether it is optimal to go left or to go right
-	int staticCurrentHeading = currentHeading;
+	int staticCurrentHeading = getCurrentHeading();
 	if (staticCurrentHeading < goalHeading) {
 		staticCurrentHeading += 360;
 	}
@@ -80,8 +76,8 @@ void reachHeading(int goalHeading){
 	motor[motorE] = 100 * direction;
 	motor[motorA] = -100 * direction;
 	//Waits for the robot to be facing the correct direction
-	while (abs(goalHeading - currentHeading) > offsetFactorTurning){
-		log_integer(currentHeading);
+	while (abs(goalHeading - getCurrentHeading()) > offsetFactorTurning){
+		log_integer(getCurrentHeading());
 		wait1Msec(1);
 	}
 	//Resets everything and prepares the robot for continued movement and turning

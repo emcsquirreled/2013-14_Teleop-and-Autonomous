@@ -1,7 +1,5 @@
 #include "Logger.h"
 
-writeCurrentHeading(1);
-
 bool gatheringData = true;
 
 void setGatheringData(bool gathering);

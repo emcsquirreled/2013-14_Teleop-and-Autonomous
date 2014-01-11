@@ -26,7 +26,7 @@ int getCollisionThreshold() {return(CollisionThreshold);}
 void writeCollisionThreshold(int s) {CollisionThreshold = s;}
 
 //Direction.h//
-int getCurrentHeading() {return(CurrentHeading);}
+float getCurrentHeading() {return(CurrentHeading);}
 void writeCurrentHeading(float c) {CurrentHeading = c;}
 
 //distance.h
@@ -34,8 +34,8 @@ int getDistance() {return(distance);}
 void writeDistance(float d) {distance = d;}
 
 //Position.h//
-int getX() {return(X);}
+float getX() {return(X);}
 void writeX(float x) {X = x;}
 
-int getY() {return(Y);}
+float getY() {return(Y);}
 void writeY(float y) {Y = y;}

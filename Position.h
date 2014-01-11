@@ -9,11 +9,8 @@
 
 */
 
+#include "Quadrant.h"
 
-
-writeX(4);  //11.7475 start position
-
-writeY(3.1); //7.9375 start position
 
 float distanceF;
 
@@ -45,7 +42,7 @@ task Get_Position()
 
 	float holder2;
 
-	float currHeading;
+	//float currHeading;
 
 	float holder3 = 0;
 
@@ -53,7 +50,7 @@ task Get_Position()
 	HTGYROstartCal(GYRO);
 	StartTask(getHeading);
 
-	StartTask(ReadData);
+	StartTask(Quadrant);
 
 	StartTask(Collision);
 

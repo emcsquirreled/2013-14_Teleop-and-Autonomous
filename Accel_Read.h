@@ -1,4 +1,4 @@
-#include "hitechnic-accelerometer.h"
+
 
 int X = 0;
 
