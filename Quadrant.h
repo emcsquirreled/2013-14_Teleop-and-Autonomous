@@ -38,7 +38,7 @@ task ReadData()
 
 /*If the value is less then 90 degrees AND greater or eual to zero
 									Write #1 in variable Quadrent */
-		if(currentHeading < 90 && currentHeading >= 0)
+		if(getCurrentHeading() < 90 && getCurrentHeading() >= 0)
 
 		{
 
@@ -48,7 +48,7 @@ task ReadData()
 /*If the value is greater than 90 degrees AND less than 180 degrees
 									Write #2 in variable Quadrent */
 
-		else if(currentHeading > 90 && currentHeading < 180)
+		else if(getCurrentHeading() > 90 && getCurrentHeading() < 180)
 
 		{
 
@@ -58,7 +58,7 @@ task ReadData()
 
 /*If the value is greater than 180 degrees AND less than 270 degrees
 									Write #3 in variable Quadrent */
-		else if(currentHeading > 180 && currentHeading < 270)
+		else if(getCurrentHeading() > 180 && getCurrentHeading() < 270)
 
 		{
 
@@ -68,7 +68,7 @@ task ReadData()
 
 /*If the value is greater than 270 degrees AND less than 361
 				Write value #4 in variable Quadrent */
-		else if(currentHeading > 270 && currentHeading < 361)
+		else if(getCurrentHeading() > 270 && getCurrentHeading() < 361)
 
 		{
 

@@ -1,8 +1,8 @@
 
 
-int X = 0;
+int x = 0;
 
-int Y = 0;
+int y = 0;
 
 int Z = 0;
 
@@ -14,11 +14,11 @@ while(1 == 1)
 
 {
 
-HTACreadAllAxes(accel, X, Y, Z);
+HTACreadAllAxes(accel, x, y, Z);
 
 
 
-nxtDisplayBigTextLine(5, "%d", X);
+nxtDisplayBigTextLine(5, "%d", x);
 
 wait1Msec(5);
 

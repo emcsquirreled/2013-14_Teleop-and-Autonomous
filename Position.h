@@ -217,7 +217,7 @@ task Get_Position()
 
 				distanceF = WheelCir * holder2;    //get the distance of inches traveled
 
-				degrees = currentHeading;       //put currHeading value into degrees variable
+				degrees = getCurrentHeading();       //put currHeading value into degrees variable
 
 				sin_cos = sin(getCurrentHeading());       //  get the sin from the numbers of degrees turned
 

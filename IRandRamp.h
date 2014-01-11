@@ -2,7 +2,7 @@
 
 int olddistance = 0;
 
-task IRandRamp()
+ void IRandRamp()
 {
 	StartTask(getHeading);
 	StartTask(Distance);

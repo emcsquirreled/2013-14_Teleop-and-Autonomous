@@ -4,6 +4,8 @@ bool gatheringData = true;
 
 void setGatheringData(bool gathering);
 
+float currHead = 0;
+
 task getHeading () {
 	//Continuously calculates haeding based on the values given from the gyro
 	//Delta is greek and means "change in"
@@ -26,8 +28,10 @@ task getHeading () {
       	prevHeading = getCurrentHeading();
       	writeCurrentHeading(prevHeading + currRate * deltaTime);
 
-      	if (getCurrentHeading() > 360) getCurrentHeading() -= 360;
-      	else if (getCurrentHeading() < 0) getCurrentHeading() += 360;
+      	currHead = getCurrentHeading();
+
+      	if (currHead > 360) currHead -= 360;
+      	else if (currHead < 0) currHead += 360;
     	}
   	}
   	//This calculates the amount of time in seconds since this part of the code as last run

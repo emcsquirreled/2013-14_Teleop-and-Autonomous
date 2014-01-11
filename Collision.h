@@ -24,7 +24,7 @@ task Collision()
 
 		}
 
-		else if(X < Set) // real value is -75
+		else if(X < getCollisionThreshold()) // real value is -75
 
 		{
 
