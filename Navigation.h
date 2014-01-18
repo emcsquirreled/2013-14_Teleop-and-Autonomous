@@ -40,9 +40,9 @@ writeMovement(0);
 	while((abs(nMotorEncoder[motorA]) + abs(nMotorEncoder[motorB])) / 2 = < tickGoal && (getMovement() != 2 || power < 0))
 	{
 		motor[motorD] = power;  // The nice thing about encoders is that we can use any power value we want, and
-		motor[motorE] = -power; // still get the same distance.
+		motor[motorE] = power; // still get the same distance.
 		motor[motorA] = power;
-		motor[motorB] = -power;
+		motor[motorB] = power;
 	}
 	if (getMovement() == 2 && power > 0){
 		StopAllTasks();
@@ -78,7 +78,8 @@ void reachHeading(int goalHeading){
 	//Starts the motors, changing direction depending on the value calculated in the previous section of code
 	motor[motorD] = 100 * direction;
 	motor[motorE] = 100 * direction;
-	motor[motorA] = -100 * direction;
+	motor[motorA] = 100 * direction;
+	motor[motorB] = 100 * direction;
 	//Waits for the robot to be facing the correct direction
 	while (abs(goalHeading - getCurrentHeading()) > offsetFactorTurning){
 		log_integer(getCurrentHeading());
