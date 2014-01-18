@@ -16,7 +16,7 @@ task Collision()
 
 	{
 
-		if(X > 80)
+		if(x_accel > 80)
 
 		{
 
@@ -24,7 +24,7 @@ task Collision()
 
 		}
 
-		else if(X < getCollisionThreshold()) // real value is -75
+		else if(x_accel < getCollisionThreshold()) // real value is -75
 
 		{
 
@@ -34,7 +34,7 @@ task Collision()
 		}
 
 
-		else if(X > -4 && X < 12)
+		else if(x_accel > -4 && x_accel < 12)
 
 		{
 
