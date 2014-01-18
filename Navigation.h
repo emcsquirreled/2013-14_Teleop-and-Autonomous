@@ -37,7 +37,7 @@ writeMovement(0);
 
 	//Waits until we have moved farther than the goal number of ticks
 	//It will also stop if we aren't going backwards and we detect a collision
-	while((abs(nMotorEncoder[motorA]) + abs(nMotorEncoder[motorB])) / 2 = < tickGoal && (getMovement() != 2 || power < 0))
+	while((abs(nMotorEncoder[motorA]) + abs(nMotorEncoder[motorB])) / 2 <= tickGoal && (getMovement() != 2 || power < 0))
 	{
 		motor[motorD] = power;  // The nice thing about encoders is that we can use any power value we want, and
 		motor[motorE] = power; // still get the same distance.

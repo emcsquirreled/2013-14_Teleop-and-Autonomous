@@ -13,16 +13,23 @@
 #pragma config(Motor,  mtr_S1_C4_1,      ,             tmotorTetrix, openLoop)
 #pragma config(Motor,  mtr_S1_C4_2,      ,             tmotorTetrix, openLoop)
 
-#include "Navigation.h"
 
 
 task main()
 {
 
-	StartTask(Collision);
+//	StartTask(Collision);
 	//StartTask(getHeading);
 	//wait1Msec(1000);
-	driveDistance(36, 75);
+	motor[motorE] = 75;
+	motor[motorD] = 75;
+	motor[motorA] = 75;
+	motor[motorB] = 75;
+	wait1Msec(1000);
+	motor[motorE] = 0;
+	motor[motorD] = 0;
+	motor[motorA] = 0;
+	motor[motorB] = 0;
 	//reachHeading(92);
 	//reachHeading(270);
 

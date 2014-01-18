@@ -93,7 +93,7 @@ task Get_Position()
 			while(getMovement() != 2) // while robot is moving
 
 			{
-				distanceF = nMotorEncoder[motorB];  // puts degrees from motor B into variable distance
+				distanceF = (abs(nMotorEncoder[motorB]) + abs(nMotorEncoder[motorA])) / 2;  // puts degrees from motor B into variable distance
 
 				nxtDisplayTextLine(1, "distance:  %f", distanceF);
 
