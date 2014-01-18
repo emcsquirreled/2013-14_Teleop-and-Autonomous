@@ -40,15 +40,16 @@ const tMUXSensor IR = msensor_S3_2;
 #include "Collision.h"
 #include "JoystickDriver.c"
 #include "IRandRamp.h"
-
+#include "Test.h"
 
 
 
 task main()
 {
 
+Test();
 
-IRandRamp();
+//IRandRamp();
 
 
 }
