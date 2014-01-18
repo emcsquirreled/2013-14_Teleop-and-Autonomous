@@ -58,17 +58,12 @@ int olddistance = 0;
 	StopTask(Collision);
 	wait1Msec(250);
 	nMotorEncoder[motorC] = 0;
-	while(abs(nMotorEncoder[motorC]) <= 600) //540
+	while(abs(nMotorEncoder[motorC]) <= 1000) //540
 	{
 		motor[motorC] = 100;
 	}
 	motor[motorC] = 0;
 	wait1Msec(250);
-	while(abs(nMotorEncoder[motorC]) >= 10) //2
-	{
-		motor[motorC] = -100;
-	}
-	motor[motorC] = 0;
 	driveDistance(12, -75);
 	reachHeading(183);
 	wait1Msec(500);

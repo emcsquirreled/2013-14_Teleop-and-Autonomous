@@ -23,7 +23,9 @@ task main()
 
 	//Wait for the start command//
 	waitForStart();
-
+	motor[elevatorElevator] = -60;
+	wait1Msec(750);
+	motor[elevatorElevator] = 0;
 	//Start getHeading.h//
 	HTGYROstartCal(GYRO);
 	StartTask(getHeading);
@@ -32,6 +34,7 @@ task main()
 	motor[motorD] = -50;
 	motor[motorE] = -50;
 	motor[motorA] = -50;
+	motor[motorB] = -50;
 	time1[T3] = 0;
 
 	while (atBeacon() == false && time1[T3] < 2500)
@@ -48,12 +51,14 @@ task main()
 	motor[motorA] = -50;
 	motor[motorD] = -50;
 	motor[motorE] = -50;
+	motor[motorB] = -50;
 
 	wait1Msec(750);
 
 	motor[motorA] = 0;
 	motor[motorD] = 0;
 	motor[motorE] = 0;
+	motor[motorB] = 0;
 
 	//Move forward for utill it hits//
 	StartTask(Collision);
@@ -64,27 +69,23 @@ task main()
 		motor[motorA] = 50;
 		motor[motorD] = 50;
 		motor[motorE] = 50;
+		motor[motorB] = 50;
 		wait1Msec(10);
 	}
 
 	motor[motorA] = 0;
 	motor[motorD] = 0;
 	motor[motorE] = 0;
+	motor[motorB] = 0;
 	PlaySound(soundBeepBeep);
 	StopTask(Collision);
 
 	//Move the block claw until 600 degrees//
-	while(abs(nMotorEncoder[motorC]) <= 600) //540
+	nMotorEncoder[motorC] = 0;
+	while(abs(nMotorEncoder[motorC]) <= 1000) //540
 	{
 		motor[motorC] = 100;
 	}
-	motor[motorC] = 0;
-	wait1Msec(250);
-	while(abs(nMotorEncoder[motorC]) >= 10) //2
-	{
-		motor[motorC] = -100;
-	}
-	motor[motorC] = 0;
 
 wait1Msec(250);
 
@@ -92,12 +93,14 @@ wait1Msec(250);
 	motor[motorD] = -50;
 	motor[motorE] = -50;
 	motor[motorA] = -50;
+	motor[motorB] = -50;
 
 	wait1Msec(1000);
 
 	motor[motorD] = 0;
 	motor[motorE] = 0;
 	motor[motorA] = 0;
+	motor[motorB] = 0;
 
 	StopAllTasks();
 

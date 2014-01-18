@@ -30,11 +30,15 @@ motor[elevatorElevator] = 0;
 
 motor[motorE] = 100;
 motor[motorD] = 100;
+motor[motorB] = 100;
+motor[motorA] = 100;
 
 wait1Msec(2500);
 
 motor[motorD] = 0;
 motor[motorE] = 0;
+motor[motorB] = 0;
+motor[motorA] = 0;
 
 
 

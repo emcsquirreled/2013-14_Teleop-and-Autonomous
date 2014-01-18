@@ -12,6 +12,7 @@ task Distance()
 	const float WheelCir = 12.55;
 
 	nMotorEncoder[motorA] = 0;
+	nMotorEncoder[motorB] = 0;
 
 	while(true)
 
@@ -20,7 +21,7 @@ task Distance()
 		while(getMovement() != 2) // while robot is moving
 
 		{
-			distanceF2 = nMotorEncoder[motorA];  // puts degrees from motor B into variable distance
+			distanceF2 = (abs(nMotorEncoder[motorA]) + abs(nMotorEncoder[motorB])) / 2;  // puts degrees from motor B into variable distance
 
 			nxtDisplayTextLine(1, "distance:  %f", getDistance());
 

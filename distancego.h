@@ -32,23 +32,27 @@ void cmDistance(float cm, int speed)
 
 //Zero encoder//
 	nMotorEncoder[motorB] = 0;
+	nMotorEncoder[motorA] = 0;
 
 //While the encoder is less then the goal//
-	while(nMotorEncoder[motorB] < goal)
+	while((abs(nMotorEncoder[motorB]) + abs(nMotorEncoder[motorA])) / 2 < goal)
 
 	{
 
 //Set speed from the pragma to the motors//
 		nxtDisplayCenteredTextLine(5, "dist.  %f", goal);
-		motor[motorC] = speed;
+		motor[motorD] = speed;
+		motor[motorE] = speed;
 		motor[motorB] = speed;
+		motor[motorA] = speed;
 
 	}
 
 //Stop motors//
-	motor[motorC] = 0;
+	motor[motorD] = 0;
+	motor[motorE] = 0;
 	motor[motorB] = 0;
-
+	motor[motorA] = 0;
 
 
 
