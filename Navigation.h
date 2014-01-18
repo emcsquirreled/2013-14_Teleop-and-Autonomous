@@ -17,7 +17,9 @@ void driveDistance(int inches, int power){
 	//In practice it overshoots slightly more with higher power levels
 writeMovement(0);
 	wait10Msec(5);
-	nMotorEncoder[motorA] = 0; // It is good practice to reset encoder values at the start of a function.
+	nMotorEncoder[motorA] = 0;
+	nMotorEncoder[motorB] = 0;
+	// It is good practice to reset encoder values at the start of a function.
 	//Calculate inches by multiplying the ratio we determined earlier with the amount of
 	//inches to go, then divide the circumference of the wheel.
 	//Since we don't want to calculate every iteration of the loop, we will find the clicks needed
@@ -35,11 +37,12 @@ writeMovement(0);
 
 	//Waits until we have moved farther than the goal number of ticks
 	//It will also stop if we aren't going backwards and we detect a collision
-	while(abs(nMotorEncoder[motorA]) < tickGoal && (getMovement() != 2 || power < 0))
+	while((abs(nMotorEncoder[motorA]) + abs(nMotorEncoder[motorB])) / 2 = < tickGoal && (getMovement() != 2 || power < 0))
 	{
 		motor[motorD] = power;  // The nice thing about encoders is that we can use any power value we want, and
 		motor[motorE] = -power; // still get the same distance.
 		motor[motorA] = power;
+		motor[motorB] = -power;
 	}
 	if (getMovement() == 2 && power > 0){
 		StopAllTasks();
@@ -47,6 +50,7 @@ writeMovement(0);
 	motor[motorE] = 0;
 	motor[motorD] = 0;
 	motor[motorA] = 0;
+	motor[motorB] = 0;
 	wait10Msec(2);
 }
 
